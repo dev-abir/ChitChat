@@ -4,7 +4,7 @@
     "description": "A simple chat application, with chat rooms.",
     "main": "src/index.js",
     "repository": "https://github.com/dev-abir/ChitChat.git",
-    "author": "dev-abir <gangulyabir777@gmail.com>",
+    "author": "Abir Ganguly <gangulyabir777@gmail.com>",
     "license": "MIT",
     "private": true,
     "dependencies": {
