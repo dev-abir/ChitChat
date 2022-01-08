@@ -1,63 +1,63 @@
 // images from: https://randomuser.me/ (https://randomuser.me/api/portraits/thumb/men/11.jpg)
-export const users = [
+export const rooms = [
     {
         image: "1.jpg",
-        username: "hoola sjhf asjfhsbj bisok sgfhsagv",
+        name: "Art",
         lastMessage: "thanks dfsfdsf sdfbdsjfjfdfor the hdjhd jshfajs dfjh elp",
     },
     {
         image: "2.jpg",
-        username: "hoola djhfh",
+        name: "Movies",
         lastMessage: "dsfngd sdhfgsh ghsgfas",
     },
     {
         image: "3.jpg",
-        username: "esdhfsgfjh jahfs",
+        name: "Manga",
         lastMessage: "dsfjhjs sjjfsdj help",
     },
     {
         image: "4.jpg",
-        username: "hoodsjhfs jshdok",
+        name: "Programming",
         lastMessage: "dsjfhs hsh jhaf ui g g hssh",
     },
     {
         image: "5.jpg",
-        username: "dsfhjs sdjfsdj",
+        name: "Reading",
         lastMessage: "dsfsjh shfsa",
     },
     {
         image: "6.jpg",
-        username: "hoola bisonsnnk",
+        name: "Tech",
         lastMessage: "thanks for the help",
     },
     {
         image: "7.jpg",
-        username: "ssf,ksjhf jsd",
+        name: "Science",
         lastMessage: "dssfs asfha",
     },
     {
         image: "8.jpg",
-        username: "hosdjh hok",
+        name: "History",
         lastMessage: "sf help",
     },
     {
         image: "9.jpg",
-        username: "Viola Morgan",
+        name: "Philosophy",
         lastMessage: "sb dsvf",
     },
     {
         image: "10.jpg",
-        username: "Viola Morgan",
+        name: "Sports",
         lastMessage: "thandf hdsfjhdshelp",
     },
     {
         image: "11.jpg",
-        username: "sfs sdfs",
+        name: "Memes",
         lastMessage: "sfs sfdhelp",
     },
 ];
 
-export const messages = [
+export let messages = [
     {
         from: "korola",
         fromSelf: false,

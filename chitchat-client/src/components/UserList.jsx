@@ -34,14 +34,14 @@ function UserList(props) {
                 <IoClose
                     className="m-auto sm:hidden cursor-pointer"
                     color={tailwindLime}
-                    size="2em"
+                    size="2rem"
                     onClick={() => setSidebarVisible(false)}
                 />
             ) : (
                 <GiHamburgerMenu
                     className="m-auto sm:hidden cursor-pointer"
                     color={tailwindLime}
-                    size="2em"
+                    size="2rem"
                     onClick={() => setSidebarVisible(true)}
                 />
             )}

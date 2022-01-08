@@ -2,62 +2,62 @@
 export const rooms = [
     {
         image: "1.jpg",
-        name: "hoola sjhf asjfhsbj bisok sgfhsagv",
+        name: "Art",
         lastMessage: "thanks dfsfdsf sdfbdsjfjfdfor the hdjhd jshfajs dfjh elp",
     },
     {
         image: "2.jpg",
-        name: "hoola djhfh",
+        name: "Movies",
         lastMessage: "dsfngd sdhfgsh ghsgfas",
     },
     {
         image: "3.jpg",
-        name: "esdhfsgfjh jahfs",
+        name: "Manga",
         lastMessage: "dsfjhjs sjjfsdj help",
     },
     {
         image: "4.jpg",
-        name: "hoodsjhfs jshdok",
+        name: "Programming",
         lastMessage: "dsjfhs hsh jhaf ui g g hssh",
     },
     {
         image: "5.jpg",
-        name: "dsfhjs sdjfsdj",
+        name: "Reading",
         lastMessage: "dsfsjh shfsa",
     },
     {
         image: "6.jpg",
-        name: "hoola bisonsnnk",
+        name: "Tech",
         lastMessage: "thanks for the help",
     },
     {
         image: "7.jpg",
-        name: "ssf,ksjhf jsd",
+        name: "Science",
         lastMessage: "dssfs asfha",
     },
     {
         image: "8.jpg",
-        name: "hosdjh hok",
+        name: "History",
         lastMessage: "sf help",
     },
     {
         image: "9.jpg",
-        name: "Viola Morgan",
+        name: "Philosophy",
         lastMessage: "sb dsvf",
     },
     {
         image: "10.jpg",
-        name: "Viola Morgan",
+        name: "Sports",
         lastMessage: "thandf hdsfjhdshelp",
     },
     {
         image: "11.jpg",
-        name: "sfs sdfs",
+        name: "Memes",
         lastMessage: "sfs sfdhelp",
     },
 ];
 
-export const messages = [
+export let messages = [
     {
         from: "korola",
         fromSelf: false,

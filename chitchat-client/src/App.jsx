@@ -1,15 +1,14 @@
 import { useState } from "react";
-import { messages, rooms } from "./testdata/data";
+import { rooms } from "./testdata/data";
 
-import Messages from "./components/Messages";
 import UserList from "./components/UserList";
 import Modal from "./components/Modal";
 import UsernameBox from "./components/UsernameBox";
-import MessageEntryBox from "./components/MessageEntryBox";
 
 import { motion, AnimatePresence } from "framer-motion";
 
 import { IoSunnyOutline, IoMoon } from "react-icons/io5";
+import MessageArea from "./components/MessageArea";
 
 // /**
 //  * Returns a random integer between min (inclusive) and max (inclusive).
@@ -85,19 +84,14 @@ function App() {
                     />
 
                     {username && selectedRoom ? (
-                        <div className="flex flex-col w-full h-full">
-                            <Messages
-                                messages={messages}
-                                selectedRoom={selectedRoom}
-                                username={username}
-                                host={host}
-                                port={port}
-                            />
-
-                            <MessageEntryBox />
-                        </div>
+                        <MessageArea
+                            selectedRoom={selectedRoom}
+                            username={username}
+                            host={host}
+                            port={port}
+                        />
                     ) : (
-                        <p className="text-3xl font-sans">Choose a room from left...</p>
+                        <p className="text-3xl font-sans">Choose a room from the left...</p>
                     )}
                 </div>
             </div>
