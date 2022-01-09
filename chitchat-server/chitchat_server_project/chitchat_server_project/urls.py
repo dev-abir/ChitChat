@@ -1,4 +1,4 @@
-"""chitchat_backend URL Configuration
+"""chitchat_server_project URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -17,7 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 
+# TODO: admin required ?
 urlpatterns = [
-    path('', include('chitchat_backend_app.urls')),
     path('admin/', admin.site.urls),
+    path('', include('chitchat_server_app.urls')),
 ]

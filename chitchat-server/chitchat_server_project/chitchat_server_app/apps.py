@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ChitchatBackendAppConfig(AppConfig):
+class ChitchatServerAppConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'chitchat_backend_app'
+    name = 'chitchat_server_app'
