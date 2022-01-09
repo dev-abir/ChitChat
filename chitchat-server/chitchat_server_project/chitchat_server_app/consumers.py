@@ -45,16 +45,15 @@ class ChatConsumer(JsonWebsocketConsumer):
         )
 
     # Receive message from WebSocket
+    # TODO: validation
     def receive_json(self, content):
-        message = content['message']
-
         # Send message to room group
         async_to_sync(self.channel_layer.group_send)(
             self.room_group_name,
             {
                 'type': 'chat_message',
                 'from': self.user_name,
-                'message': message
+                'message': content['message'].strip()
             }
         )
 
