@@ -62,7 +62,5 @@ class ChatConsumer(JsonWebsocketConsumer):
         self.send_json(event)
 
     def info(self, event):
-        message = event['message']
-
         # Send message to WebSocket
         self.send_json(event)
