@@ -12,7 +12,7 @@ function MessageArea(props) {
 
     const [messages, setMessages] = useState([]);
 
-    const sendMessage = (message) => ws.current.send(JSON.stringify({ message: message }));
+    const sendMessage = (data) => ws.current.send(JSON.stringify(data));
 
     /* divide the whole problem into two parts:
         1) initialize the ws only once on mount, and destroy on unmount.
@@ -27,14 +27,13 @@ function MessageArea(props) {
              this component again and again (which React does multiple times)
              so using useEffect makes most sense...
     */
-
     useEffect(() => {
         ws.current = new WebSocket(
             `ws://${props.host}:${props.port}/ws/chat/${props.username}/${props.selectedRoom.name}`
         );
 
-        ws.current.onopen = () => console.log("ws opened");
-        ws.current.onclose = () => console.log("ws closed");
+        ws.current.onopen = () => console.log(`ws opened ${props.selectedRoom.name}`);
+        ws.current.onclose = () => console.log(`ws closed ${props.selectedRoom.name}`);
 
         return () => ws.current.close();
     }, [props.host, props.port, props.username, props.selectedRoom]);
@@ -44,16 +43,11 @@ function MessageArea(props) {
         (we are just declaring funcs, which will call setMessages())) */
     useEffect(() => {
         const addMessage = (messageData) => {
+            console.log(messageData);
+            // add extra info
+            messageData.fromSelf = messageData.from === props.username;
             // interesting way of mutating...
-            setMessages([
-                ...messages,
-                {
-                    from: messageData.from,
-                    fromSelf: messageData.from === props.username,
-                    messageText: messageData.message,
-                    time: "17:34 08/03/2020",
-                },
-            ]);
+            setMessages([...messages, messageData]);
         };
 
         ws.current.onmessage = (e) => addMessage(JSON.parse(e.data));
@@ -69,7 +63,7 @@ function MessageArea(props) {
                 port={props.port}
             />
 
-            <MessageEntryBox sendMessageFunc={(message) => sendMessage(message)} />
+            <MessageEntryBox sendMessageFunc={(data) => sendMessage(data)} />
         </div>
     );
 }

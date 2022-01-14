@@ -1,4 +1,4 @@
-import json
+import datetime
 from asgiref.sync import async_to_sync
 from channels.generic.websocket import JsonWebsocketConsumer
 
@@ -47,14 +47,15 @@ class ChatConsumer(JsonWebsocketConsumer):
     # Receive message from WebSocket
     # TODO: validation
     def receive_json(self, content):
+        # add extra info for the client
+        content["from"] = self.user_name
+        content["time"] = datetime.datetime.now().strftime(
+            '%d/%m/%Y %I:%M:%S %p')
+
         # Send message to room group
         async_to_sync(self.channel_layer.group_send)(
             self.room_group_name,
-            {
-                'type': 'chat_message',
-                'from': self.user_name,
-                'message': content['message'].strip()
-            }
+            content
         )
 
     # Receive message from room group
@@ -63,5 +64,9 @@ class ChatConsumer(JsonWebsocketConsumer):
         self.send_json(event)
 
     def info(self, event):
+        # Send message to WebSocket
+        self.send_json(event)
+
+    def typing_status(self, event):
         # Send message to WebSocket
         self.send_json(event)
