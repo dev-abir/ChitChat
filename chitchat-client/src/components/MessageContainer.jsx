@@ -3,12 +3,9 @@ import React from "react";
 
 function MessageContainer(props) {
     // HACK: probably tailwind isn't producing (do a chrome inspect element)
-    // justify-end, justify-start classes so just add styles...
+    // justify-end, justify-start classes in output css so just add styles...
     return (
-        <div
-            className={`flex flex-row w-full`}
-            style={{ justifyContent: `flex-${props.flexJustify}` }}
-        >
+        <div className="flex flex-row w-full break-all" style={{ justifyContent: props.justify }}>
             {props.children}
         </div>
     );

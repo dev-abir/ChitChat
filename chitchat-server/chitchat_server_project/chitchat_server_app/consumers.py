@@ -17,25 +17,44 @@ class ChatConsumer(JsonWebsocketConsumer):
             self.send_json({"error": "room name must be alphanumeric"})
             self.close()
 
-        if not self.user_name.isalnum():
+        elif not self.user_name.isalnum():
             self.send_json({"error": "username must be alphanumeric"})
             self.close()
 
-        self.room_group_name = 'chat_%s' % self.room_name
+        else:
+            self.room_group_name = 'chat_%s' % self.room_name
 
-        # Join room group
-        async_to_sync(self.channel_layer.group_add)(
-            self.room_group_name,
-            self.channel_name
-        )
+            # join room group
+            async_to_sync(self.channel_layer.group_add)(
+                self.room_group_name,
+                self.channel_name
+            )
+
+            # send this news to the room
+
+            content = {
+                'type': 'info',
+                'message': f"{self.user_name} entered"
+            }
+
+            self.add_extra_info(content)
+
+            async_to_sync(self.channel_layer.group_send)(
+                self.room_group_name,
+                content
+            )
 
     def disconnect(self, close_code):
+        content = {
+            'type': 'info',
+            'message': f"{self.user_name} left"
+        }
+
+        self.add_extra_info(content)
+
         async_to_sync(self.channel_layer.group_send)(
             self.room_group_name,
-            {
-                'type': 'info',
-                'message': f"{self.user_name} left"
-            }
+            content
         )
 
         # Leave room group
@@ -44,13 +63,17 @@ class ChatConsumer(JsonWebsocketConsumer):
             self.channel_name
         )
 
-    # Receive message from WebSocket
-    # TODO: validation
-    def receive_json(self, content):
+    # TODO: auto add this to every message from client
+    def add_extra_info(self, content):
         # add extra info for the client
         content["from"] = self.user_name
         content["time"] = datetime.datetime.now().strftime(
             '%d/%m/%Y %I:%M:%S %p')
+
+    # Receive message from WebSocket
+    # TODO: validation
+    def receive_json(self, content):
+        self.add_extra_info(content)
 
         # Send message to room group
         async_to_sync(self.channel_layer.group_send)(

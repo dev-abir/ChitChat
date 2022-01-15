@@ -4,8 +4,8 @@ import MessageContainer from "./MessageContainer";
 
 function MessageAreaInfo(props) {
     return (
-        <MessageContainer flexJustify="center">
-            <p className="m-3 rounded-full p-1 shadow-xl w-1/3 italic text-black bg-slate-500 dark:text-white text-center transition-all duration-500">
+        <MessageContainer justify="center">
+            <p className="m-3 rounded-full p-1 shadow-xl w-1/3 italic text-white bg-slate-500 text-center transition-all duration-500">
                 [{props.messageData.message}]
             </p>
         </MessageContainer>

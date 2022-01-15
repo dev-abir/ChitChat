@@ -7,30 +7,30 @@ import TextMessage from "./TextMessage";
 
 function getMessageObject(messageData, key) {
     switch (messageData.type) {
-        case "chat_message":
-            return <TextMessage key={key} messageData={messageData} />;
         case "info":
             return <MessageAreaInfo key={key} messageData={messageData} />;
-        // TODO: typing status...
-        // case "typing_status":
-        //     return <MessageTypingIndicator key={key} messageData={messageData} />;
+        default:
+            // for "chat_message"
+            return <TextMessage key={key} messageData={messageData} />;
     }
 }
 
 function Messages(props) {
     // TODO: userId is public ? entering any arbitrary userId will.... ? Entering own userId ?
-    // const params = useParams();
 
     // just to scroll to bottom
     const bottomDiv = useRef();
 
     useEffect(() => {
+        // TODO: doesn't work, when typing animation disappears
         bottomDiv.current?.scrollIntoView({ behavior: "smooth" });
-    }, [props.messages]);
+    }, [props.messages, props.showTyping]);
 
     return (
         <div className="flex flex-col overflow-y-scroll h-full w-full">
             {props.messages && props.messages.map((value, key) => getMessageObject(value, key))}
+
+            {props.showTyping && <MessageTypingIndicator />}
 
             <div ref={bottomDiv} />
         </div>

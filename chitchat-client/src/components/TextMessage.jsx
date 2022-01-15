@@ -5,7 +5,7 @@ import MessageContainer from "./MessageContainer";
 
 function TextMessage(props) {
     return (
-        <MessageContainer flexJustify={`${props.messageData.fromSelf ? "end" : "start"}`}>
+        <MessageContainer justify={`${props.messageData.fromSelf ? "end" : "start"}`}>
             <div
                 className={
                     "m-3 rounded-md p-3 shadow-xl w-3/4 " +

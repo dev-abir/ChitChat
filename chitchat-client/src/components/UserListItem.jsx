@@ -15,7 +15,7 @@ function UserListItem(props) {
             />
             <div className="flex flex-col overflow-hidden">
                 <div className="text-lg truncate">{props.room.name}</div>
-                <div className="text-gray-900 dark:text-gray-300 text-sm truncate">{props.room.lastMessage}</div>
+                <div className="text-gray-700 dark:text-gray-300 text-sm truncate">{props.room.lastMessage}</div>
             </div>
         </div>
     );

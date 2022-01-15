@@ -11,6 +11,7 @@ function MessageArea(props) {
     const ws = useRef(null);
 
     const [messages, setMessages] = useState([]);
+    const [isFriendTyping, setIsFriendTyping] = useState(false);
 
     const sendMessage = (data) => ws.current.send(JSON.stringify(data));
 
@@ -44,10 +45,21 @@ function MessageArea(props) {
     useEffect(() => {
         const addMessage = (messageData) => {
             console.log(messageData);
+
             // add extra info
             messageData.fromSelf = messageData.from === props.username;
-            // interesting way of mutating...
-            setMessages([...messages, messageData]);
+
+            if (messageData.type === "typing_status" && !messageData.fromSelf) {
+                setIsFriendTyping(messageData.value);
+            } else {
+                // if there's a new message from friend, then
+                // probably typing has end...
+                // FIXME: not working sometimes
+                // if (!messageData.fromSelf) setIsFriendTyping(false);
+
+                // interesting way of mutating
+                setMessages([...messages, messageData]);
+            }
         };
 
         ws.current.onmessage = (e) => addMessage(JSON.parse(e.data));
@@ -61,6 +73,7 @@ function MessageArea(props) {
                 username={props.username}
                 host={props.host}
                 port={props.port}
+                showTyping={isFriendTyping}
             />
 
             <MessageEntryBox sendMessageFunc={(data) => sendMessage(data)} />

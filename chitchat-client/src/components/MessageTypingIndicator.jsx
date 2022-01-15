@@ -7,15 +7,8 @@ const dot = () => <div className="w-5 h-5 rounded-full bg-gray-500 animate-pulse
 
 function MessageTypingIndicator(props) {
     return (
-        <MessageContainer flexJustify={`${props.messageData.fromSelf ? "start" : "end"}`}>
-            <div
-                className={
-                    "m-3 rounded-md p-3 shadow-xl w-3/4 flex flex-row gap-2" +
-                    (props.messageData.fromSelf
-                        ? "shadow-lime-300/50 bg-lime-500"
-                        : "shadow-sky-300/50 bg-sky-500")
-                }
-            >
+        <MessageContainer flexJustify="end">
+            <div className="m-3 rounded-md p-3 shadow-xl w-3/4 flex flex-row gap-2 shadow-sky-300/50 bg-sky-500">
                 {dot()} {dot()} {dot()}
             </div>
         </MessageContainer>
