@@ -3,175 +3,56 @@ export const rooms = [
     {
         image: "1.jpg",
         name: "Art",
-        lastMessage: "thanks dfsfdsf sdfbdsjfjfdfor the hdjhd jshfajs dfjh elp",
+        lastMessage: "last message",
     },
     {
         image: "2.jpg",
         name: "Movies",
-        lastMessage: "dsfngd sdhfgsh ghsgfas",
+        lastMessage: "last message 2",
     },
     {
         image: "3.jpg",
         name: "Manga",
-        lastMessage: "dsfjhjs sjjfsdj help",
+        lastMessage: "last message 3",
     },
     {
         image: "4.jpg",
         name: "Programming",
-        lastMessage: "dsjfhs hsh jhaf ui g g hssh",
+        lastMessage: "last message 4",
     },
     {
         image: "5.jpg",
         name: "Reading",
-        lastMessage: "dsfsjh shfsa",
+        lastMessage: "last message 5",
     },
     {
         image: "6.jpg",
         name: "Tech",
-        lastMessage: "thanks for the help",
+        lastMessage: "last message 6",
     },
     {
         image: "7.jpg",
         name: "Science",
-        lastMessage: "dssfs asfha",
+        lastMessage: "last message 7",
     },
     {
         image: "8.jpg",
         name: "History",
-        lastMessage: "sf help",
+        lastMessage: "last message 8",
     },
     {
         image: "9.jpg",
         name: "Philosophy",
-        lastMessage: "sb dsvf",
+        lastMessage: "last message 9",
     },
     {
         image: "10.jpg",
         name: "Sports",
-        lastMessage: "thandf hdsfjhdshelp",
+        lastMessage: "last message 10",
     },
     {
         image: "11.jpg",
         name: "Memes",
-        lastMessage: "sfs sfdhelp",
-    },
-];
-
-export let messages = [
-    {
-        from: "korola",
-        fromSelf: false,
-        messageText: "this is a message",
-        time: "16:34 16/03/2020",
-    },
-    {
-        from: "tokola",
-        fromSelf: true,
-        messageText:
-            "this is a long long long long long long long long long long long long message",
-        time: "16:38 16/03/2020",
-    },
-    {
-        from: "tokola",
-        fromSelf: true,
-        messageText: "this is another message",
-        time: "17:34 16/03/2020",
-    },
-    {
-        from: "tokola",
-        fromSelf: true,
-        messageText:
-            "this is a long long long long long long long long long long long long message",
-        time: "16:38 16/03/2020",
-    },
-    {
-        from: "korola",
-        fromSelf: false,
-        messageText: "this is a message",
-        time: "16:34 16/03/2020",
-    },
-    {
-        from: "korola",
-        fromSelf: false,
-        messageText: "this is a message",
-        time: "16:34 16/03/2020",
-    },
-    {
-        from: "tokola",
-        fromSelf: true,
-        messageText:
-            "this is a long long long long long long long long long long long long message",
-        time: "16:38 16/03/2020",
-    },
-    {
-        from: "tokola",
-        fromSelf: true,
-        messageText: "this is another message",
-        time: "17:34 16/03/2020",
-    },
-    {
-        from: "tokola",
-        fromSelf: true,
-        messageText:
-            "this is a long long long long long long long long long long long long message",
-        time: "16:38 16/03/2020",
-    },
-    {
-        from: "korola",
-        fromSelf: false,
-        messageText: "this is a message",
-        time: "16:34 16/03/2020",
-    },
-    {
-        from: "tokola",
-        fromSelf: true,
-        messageText:
-            "this is a long long long long long long long long long long long long message",
-        time: "16:38 16/03/2020",
-    },
-    {
-        from: "tokola",
-        fromSelf: true,
-        messageText: "this is another message",
-        time: "17:34 16/03/2020",
-    },
-    {
-        from: "tokola",
-        fromSelf: true,
-        messageText:
-            "this is a long long long long long long long long long long long long message",
-        time: "16:38 16/03/2020",
-    },
-    {
-        from: "korola",
-        fromSelf: false,
-        messageText: "this is a message",
-        time: "16:34 16/03/2020",
-    },
-    {
-        from: "korola",
-        fromSelf: false,
-        messageText: "this is a message",
-        time: "16:34 16/03/2020",
-    },
-    {
-        from: "tokola",
-        fromSelf: true,
-        messageText:
-            "this is a long long long long long long long long long long long long message",
-        time: "16:38 16/03/2020",
-    },
-    {
-        from: "tokola",
-        fromSelf: true,
-        messageText: "this is another message",
-        time: "17:34 16/03/2020",
-    },
-    {
-        from: "tokola",
-        fromSelf: true,
-        messageText:
-            "this is a long long long long long long long long long long long long message",
-        time: "16:38 16/03/2020",
+        lastMessage: "last message 11",
     },
 ];

@@ -9,9 +9,10 @@ function getMessageObject(messageData, key) {
     switch (messageData.type) {
         case "info":
             return <MessageAreaInfo key={key} messageData={messageData} />;
-        default:
-            // for "chat_message"
+        case "chat_message":
             return <TextMessage key={key} messageData={messageData} />;
+        default:
+        // we can just ignore the default case...
     }
 }
 
@@ -27,7 +28,7 @@ function Messages(props) {
     }, [props.messages, props.showTyping]);
 
     return (
-        <div className="flex flex-col overflow-y-scroll h-full w-full">
+        <div className="flex flex-col overflow-y-auto h-full w-full">
             {props.messages && props.messages.map((value, key) => getMessageObject(value, key))}
 
             {props.showTyping && <MessageTypingIndicator />}
