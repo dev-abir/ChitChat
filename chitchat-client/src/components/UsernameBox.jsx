@@ -56,7 +56,7 @@ function UsernameBox(props) {
             <button
                 onClick={(e) => {
                     e.preventDefault();
-                    checkUname(username)
+                    checkUname(username) && privacyChecked
                         ? props.setUsernameFunc(username)
                         : setShowVibrateAnim(true);
                     if (!privacyChecked) setPrivacyChecked(false);
