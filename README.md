@@ -1,6 +1,8 @@
 # ChitChat
 A simple chat application, with chat rooms.
 
+# **[Live demo](https://chitchat-client.onrender.com/)**
+
 Mainly used [react](https://reactjs.org/) for the frontend and [django](https://www.djangoproject.com/), and django channels for the backend.
 
 Thanks to the open source libraries and websites like: [framer-motion](https://www.framer.com/motion/), [tailwindcss](https://tailwindcss.com/),
