@@ -29,7 +29,12 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["chitchat-server.onrender.com"]
+HOST = ""
+try:
+    HOST = config('HOST')
+except:
+    HOST = ""
+ALLOWED_HOSTS = [] + [HOST]
 
 
 # Application definition
