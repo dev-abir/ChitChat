@@ -6,3 +6,9 @@ Mainly used [react](https://reactjs.org/) for the frontend and [django](https://
 Thanks to the open source libraries and websites like: [framer-motion](https://www.framer.com/motion/), [tailwindcss](https://tailwindcss.com/),
 [animista](https://animista.net/),
 [djangochannelsrestframework](https://github.com/hishnash/djangochannelsrestframework) (although I haven't used this in the final app) etc...
+
+> use command `daphne chitchat_server_project.asgi:application` to start the server in production mode. Also make debug=False in production
+
+> To install dependencies, use: `pip install -r requirements.txt` or just: `pip install Django channels daphne python-decouple`
+
+> Create a .env file and put a SECRET_KEY there, or decleare a SECRET_KEY environment variable.
