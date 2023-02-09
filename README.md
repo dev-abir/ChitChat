@@ -13,4 +13,6 @@ Thanks to the open source libraries and websites like: [framer-motion](https://w
 
 > Create a .env file and put a SECRET_KEY there, or decleare a SECRET_KEY environment variable.
 
+> To create a secret key: `python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'`
+
 > use command `daphne chitchat_server_project.asgi:application` to start the server in production mode. Also make debug=False in production (use `daphne -p $PORT ...` if you are using a custom port environment variable).

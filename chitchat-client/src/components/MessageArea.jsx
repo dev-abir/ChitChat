@@ -63,7 +63,7 @@ function MessageArea(props) {
         };
 
         ws.current.onmessage = (e) => addMessage(JSON.parse(e.data));
-    }, [props.username, messages]);
+    }, [props.selectedRoom.name, messages, props.username]);
 
     return (
         <div className="flex flex-col w-full h-full">
