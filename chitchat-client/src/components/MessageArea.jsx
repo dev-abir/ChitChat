@@ -30,7 +30,7 @@ function MessageArea(props) {
     */
     useEffect(() => {
         ws.current = new WebSocket(
-            `wss://${props.host}:${props.port}/ws/chat/${props.username}/${props.selectedRoom.name}`
+            `wss://${props.host}/ws/chat/${props.username}/${props.selectedRoom.name}`
         );
 
         ws.current.onopen = () => console.log(`ws opened ${props.selectedRoom.name}`);
