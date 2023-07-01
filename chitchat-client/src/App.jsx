@@ -32,7 +32,7 @@ function App() {
     const [selectedRoom, setSelectedRoom] = useState();
 
     const host = "chitchat-server.onrender.com";
-    const port = "8000";
+    const port = "80";
     // const [username, setUsername] = useState("user" + getRandomInt(1000000000, 9999999999));
     const [username, setUsername] = useState();
 

@@ -2,6 +2,9 @@ import datetime
 from asgiref.sync import async_to_sync
 from channels.generic.websocket import JsonWebsocketConsumer
 
+# FIXME: this is a global variable for now
+# (which should not be the case. We should use some persistent storage)
+messages = []
 
 # TODO: admin app required?
 # check the settings.py once....
@@ -44,6 +47,8 @@ class ChatConsumer(JsonWebsocketConsumer):
                 content
             )
 
+            messages.append(content)
+
     def disconnect(self, close_code):
         content = {
             'type': 'info',
@@ -57,6 +62,8 @@ class ChatConsumer(JsonWebsocketConsumer):
             content
         )
 
+        messages.append(content)
+
         # Leave room group
         async_to_sync(self.channel_layer.group_discard)(
             self.room_group_name,
@@ -67,6 +74,7 @@ class ChatConsumer(JsonWebsocketConsumer):
     def add_extra_info(self, content):
         # add extra info for the client
         content["from"] = self.user_name
+        content["room"] = self.room_name
         content["time"] = datetime.datetime.now().strftime(
             '%d/%m/%Y %I:%M:%S %p')
 
@@ -81,6 +89,10 @@ class ChatConsumer(JsonWebsocketConsumer):
             content
         )
 
+        # do not save chat_history events
+        if content["type"] != "chat_history":
+            messages.append(content)
+
     # Receive message from room group
     def chat_message(self, event):
         # Send message to WebSocket
@@ -92,4 +104,10 @@ class ChatConsumer(JsonWebsocketConsumer):
 
     def typing_status(self, event):
         # Send message to WebSocket
+        self.send_json(event)
+    
+    def chat_history(self, event):
+        # Send chat history (of websocket's room) to WebSocket
+        filtered_messages = list(filter(lambda m: m["room"] == event["room"], messages))
+        event["messages"] = filtered_messages
         self.send_json(event)

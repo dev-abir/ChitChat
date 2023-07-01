@@ -33,7 +33,10 @@ function MessageArea(props) {
             `wss://${props.host}/ws/chat/${props.username}/${props.selectedRoom.name}`
         );
 
-        ws.current.onopen = () => console.log(`ws opened ${props.selectedRoom.name}`);
+        ws.current.onopen = () => {
+            console.log(`ws opened ${props.selectedRoom.name}`);
+            ws.current.send(JSON.stringify({ type: "chat_history" }));
+        };
         ws.current.onclose = () => console.log(`ws closed ${props.selectedRoom.name}`);
 
         return () => ws.current.close();
@@ -51,6 +54,8 @@ function MessageArea(props) {
 
             if (messageData.type === "typing_status" && !messageData.fromSelf) {
                 setIsFriendTyping(messageData.value);
+            } else if (messageData.type === "chat_history") {
+                setMessages(messageData.messages);
             } else {
                 // if there's a new message from friend, then
                 // probably typing has end...
@@ -68,7 +73,7 @@ function MessageArea(props) {
     return (
         <div className="flex flex-col w-full h-full">
             <Messages
-                messages={messages}
+                messages={messages.filter((m) => m.room === props.selectedRoom.name)}
                 selectedRoom={props.selectedRoom}
                 username={props.username}
                 host={props.host}
