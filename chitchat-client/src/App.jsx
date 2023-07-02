@@ -36,9 +36,11 @@ function App() {
     if (isDev()) {
         host = "localhost";
         port = "8000";
+        protocol = "ws";
     } else {
         host = "chitchat-server.onrender.com";
         port = null;
+        protocol = "wss";
     }
     // const [username, setUsername] = useState("user" + getRandomInt(1000000000, 9999999999));
     const [username, setUsername] = useState();
@@ -94,6 +96,7 @@ function App() {
                         <MessageArea
                             selectedRoom={selectedRoom}
                             username={username}
+                            protocol={protocol}
                             host={host}
                             port={port}
                         />
