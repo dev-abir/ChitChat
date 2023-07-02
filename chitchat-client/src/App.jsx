@@ -31,7 +31,7 @@ function App() {
     );
 
     const [selectedRoom, setSelectedRoom] = useState();
-    let host, port;
+    let host, port, protocol;
 
     if (isDev()) {
         host = "localhost";
