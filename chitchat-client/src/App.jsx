@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import { IoSunnyOutline, IoMoon } from "react-icons/io5";
 import MessageArea from "./components/MessageArea";
+import isDev from "./utils/devDetect";
 
 // /**
 //  * Returns a random integer between min (inclusive) and max (inclusive).
@@ -30,9 +31,15 @@ function App() {
     );
 
     const [selectedRoom, setSelectedRoom] = useState();
+    let host, port;
 
-    const host = "chitchat-server.onrender.com";
-    const port = "80";
+    if (isDev()) {
+        host = "localhost";
+        port = "8000";
+    } else {
+        host = "chitchat-server.onrender.com";
+        port = null;
+    }
     // const [username, setUsername] = useState("user" + getRandomInt(1000000000, 9999999999));
     const [username, setUsername] = useState();
 

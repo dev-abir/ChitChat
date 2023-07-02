@@ -47,7 +47,8 @@ function MessageEntryBox(props) {
                 type="submit"
                 onClick={(e) => {
                     e.preventDefault();
-                    props.sendMessageFunc({ type: "chat_message", message: message });
+                    if (message.trim())
+                        props.sendMessageFunc({ type: "chat_message", message: message.trim() });
                     setMessage("");
                 }}
             >

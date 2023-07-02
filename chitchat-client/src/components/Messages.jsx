@@ -5,12 +5,22 @@ import MessageAreaInfo from "./MessageAreaInfo";
 import MessageTypingIndicator from "./MessageTypingIndicator";
 import TextMessage from "./TextMessage";
 
-function getMessageObject(messageData, key) {
+function getMessageObject(messageData, key, ownUsername) {
     switch (messageData.type) {
         case "info":
-            return <MessageAreaInfo key={key} messageData={messageData} />;
+            return (
+                messageData.from !== ownUsername && (
+                    <MessageAreaInfo key={key} messageData={messageData} />
+                )
+            );
         case "chat_message":
-            return <TextMessage key={key} messageData={messageData} />;
+            return (
+                <TextMessage
+                    key={key}
+                    messageData={messageData}
+                    fromSelf={messageData.from === ownUsername}
+                />
+            );
         default:
         // we can just ignore the default case...
     }
@@ -29,7 +39,8 @@ function Messages(props) {
 
     return (
         <div className="flex flex-col overflow-y-auto h-full w-full">
-            {props.messages && props.messages.map((value, key) => getMessageObject(value, key))}
+            {props.messages &&
+                props.messages.map((value, key) => getMessageObject(value, key, props.username))}
 
             {props.showTyping && <MessageTypingIndicator />}
 

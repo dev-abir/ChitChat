@@ -5,17 +5,17 @@ import MessageContainer from "./MessageContainer";
 
 function TextMessage(props) {
     return (
-        <MessageContainer justify={`${props.messageData.fromSelf ? "end" : "start"}`}>
+        <MessageContainer justify={`${props.fromSelf ? "end" : "start"}`}>
             <div
                 className={
                     "m-3 rounded-md p-3 shadow-xl w-3/4 " +
-                    (props.messageData.fromSelf
+                    (props.fromSelf
                         ? "shadow-lime-300/50 bg-lime-500"
                         : "shadow-sky-300/50 bg-sky-500")
                 }
             >
                 <p className="font-bold truncate">
-                    {props.messageData.fromSelf ? "You" : props.messageData.from} [
+                    {props.fromSelf ? "You" : props.messageData.from} [
                     {props.messageData.time}]
                 </p>
 

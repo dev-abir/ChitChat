@@ -30,7 +30,9 @@ function MessageArea(props) {
     */
     useEffect(() => {
         ws.current = new WebSocket(
-            `wss://${props.host}/ws/chat/${props.username}/${props.selectedRoom.name}`
+            `ws://${props.host}${props.port ? ":" + props.port : ""}/ws/chat/${props.username}/${
+                props.selectedRoom.name
+            }`
         );
 
         ws.current.onopen = () => {
@@ -47,12 +49,7 @@ function MessageArea(props) {
         (we are just declaring funcs, which will call setMessages())) */
     useEffect(() => {
         const addMessage = (messageData) => {
-            console.log(messageData);
-
-            // add extra info
-            messageData.fromSelf = messageData.from === props.username;
-
-            if (messageData.type === "typing_status" && !messageData.fromSelf) {
+            if (messageData.type === "typing_status" && messageData.from !== props.username) {
                 setIsFriendTyping(messageData.value);
             } else if (messageData.type === "chat_history") {
                 setMessages(messageData.messages);
